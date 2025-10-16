@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Devs Orientation — Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2b9a6b89c.js" crossorigin="anonymous"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body {
+      background: radial-gradient(circle at 20% 20%, #2b1d64, #0f0a29);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+    .stars {
+      position: fixed;
+      inset: 0;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.12;
+      z-index: 0;
+      animation: moveStars 60s linear infinite;
+    }
+    @keyframes moveStars { from { background-position: 0 0 } to { background-position: 10000px 5000px } }
+
+    header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 60px 20px 20px;
+      animation: fadeInDown 1s ease forwards;
+    }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px) } to { opacity: 1; transform: translateY(0) } }
+    header h1 { color: #d6c9ff; font-size: 32px; margin-bottom: 10px }
+    header p { color: #bfb6ff; font-size: 16px; animation: fadeIn 1.5s ease forwards; }
+    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+    .info-card {
+      max-width: 680px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(122,75,255,0.1);
+      z-index: 2;
+      animation: fadeUp 1.2s ease forwards;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px) } to { opacity: 1; transform: translateY(0) } }
+    .info-card h2 { color: #a88eff; margin-bottom: 12px; font-size: 22px }
+    .info-line { margin: 6px 0; color: #e6e0ff; font-size: 15px }
+
+    .apply-btn {
+      margin: 24px auto 0;
+      display: inline-block;
+      background: linear-gradient(90deg, #7a4bff, #9d6dff);
+      color: #fff;
+      padding: 12px 36px;
+      border-radius: 28px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .apply-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(122,75,255,0.4);
+    }
+
+    .activities {
+      max-width: 960px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+      z-index: 2;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px;
+    }
+    .activity-card {
+      background: rgba(255,255,255,0.08);
+      padding: 24px;
+      border-radius: 16px;
+      text-align: center;
+      transition: all .3s ease;
+      box-shadow: 0 6px 18px rgba(122,75,255,0.1);
+      animation: fadeUp .8s ease forwards;
+    }
+    .activity-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      background: rgba(255,255,255,0.12);
+    }
+    .activity-card i {
+      font-size: 40px;
+      margin-bottom: 10px;
+      display: block;
+      color: #c3a6ff;
+      animation: pulse 3s infinite;
+    }
+    @keyframes pulse { 0%,100% { transform: scale(1) } 50% { transform: scale(1.15) } }
+    .activity-card h3 { color: #dcd3ff; margin-bottom: 8px; font-size: 18px }
+    .activity-card p { color: #ccc; font-size: 14px; line-height: 1.5 }
+
+    .container {
+      max-width: 680px;
+      margin: 60px auto 80px;
+      padding: 0 18px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1s ease forwards;
+    }
+    .card {
+      background: rgba(255,255,255,0.06);
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(122,75,255,0.08);
+    }
+    .card h3 {
+      color: #cbbfff;
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: 20px;
+    }
+    form { display: grid; gap: 12px }
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 6px 0;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      outline: none;
+      transition: all .2s ease;
+    }
+    input:focus, textarea:focus {
+      background: rgba(255,255,255,0.18);
+    }
+    input::placeholder, textarea::placeholder {
+      color: #dedede9a;
+    }
+    .row { display: flex; gap: 12px }
+    .row .col { flex: 1 }
+    .radio-group { display: flex; gap: 12px; align-items: center }
+    label.radio {
+      background: rgba(255,255,255,0.06);
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: .2s;
+    }
+    label.radio:hover {
+      background: rgba(255,255,255,0.12);
+    }
+    .submit-btn {
+      margin-top: 6px;
+      background: linear-gradient(90deg, #7a4bff, #9d6dff);
+      color: #fff;
+      padding: 12px;
+      border-radius: 12px;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer;
+      position: relative;
+      transition: .3s;
+    }
+    .submit-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(122,75,255,0.4);
+    }
+    .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #fff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg) } }
+    .note {
+      margin-top: 12px;
+      color: #d6c9ff;
+      font-size: 14px;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      color: #bdb6ff;
+      margin-top: 18px;
+      font-size: 13px;
+      animation: fadeIn 2s ease forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <header>
+    <h1><i class="fa-solid fa-rocket"></i> Devs Orientation Day</h1>
+    <p>Your journey with Devs starts here 🚀</p>
+  </header>
+
+  <section class="info-card">
+    <h2><i class="fa-solid fa-calendar-days"></i> Event Details</h2>
+    <div class="info-line"><strong>📍 Location:</strong> Team Egypt</div>
+    <div class="info-line"><strong>🗓 Date:</strong> 20 Oct 2025</div>
+    <div class="info-line"><strong>🕐 Time:</strong> 1:00 PM</div>
+    <button class="apply-btn" onclick="showForm()"><i class="fa-solid fa-pen-to-square"></i> Register Now</button>
+  </section>
+
+  <section class="activities">
+    <div class="activity-card">
+      <i class="fa-solid fa-people-group"></i>
+      <h3>Meet the Team</h3>
+      <p>Get to know your team members, leaders, and all committees in Devs.</p>
+    </div>
+    <div class="activity-card">
+      <i class="fa-solid fa-bolt"></i>
+      <h3>Fun Activities</h3>
+      <p>Enjoy interactive games, challenges, and surprises that make the day exciting!</p>
+    </div>
+    <div class="activity-card">
+      <i class="fa-solid fa-lightbulb"></i>
+      <h3>Discover & Learn</h3>
+      <p>Learn about Devs’ culture, goals, and how to grow within the community.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="card" id="formCard">
+      <h3><i class="fa-solid fa-user-check"></i> Orientation Attendance Form</h3>
+
+      <form id="orientationForm">
+        <input type="text" name="Name" placeholder="Full Name" required>
+
+        <div class="row">
+          <div class="col"><input type="tel" name="Phone" placeholder="Phone (WhatsApp)" required></div>
+          <div class="col"><input type="email" name="Email" placeholder="Email Address" required></div>
+        </div>
+
+        <label style="margin-top:8px;color:#eee">Will you attend?</label>
+        <div class="radio-group">
+          <label class="radio"><input type="radio" name="WillAttend" value="Yes" required> Yes</label>
+          <label class="radio"><input type="radio" name="WillAttend" value="No"> اكيد</label>
+        </div>
+
+        <textarea name="Comment" rows="4" placeholder="Any comments or notes (optional)"></textarea>
+
+        <input type="hidden" name="Location" value="Ismailia, Egypt — 1:00 PM">
+
+        <button type="submit" class="submit-btn">
+          <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Submit</span>
+          <div class="spinner"></div>
+        </button>
+
+        <p class="note">You'll receive a confirmation email once your registration is submitted.</p>
+      </form>
+    </div>
+  </div>
+
+  <footer>© 2025 Devs Community — Together Making Career</footer>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxqxQ8kjwg_clesCflCrGBjddC26r43lA_a3j6TTHuQQsTzgVwzlBZgup6vRXFnG_-egQ/exec";
+
+    function showForm(){
+      document.getElementById('formCard').scrollIntoView({behavior:'smooth'});
+    }
+
+    const form = document.getElementById('orientationForm');
+    const spinner = document.querySelector('.spinner');
+    const btnText = document.querySelector('.btn-text');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      spinner.style.display = 'block';
+      btnText.textContent = 'Sending...';
+      form.querySelector('.submit-btn').disabled = true;
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(() => {
+          spinner.style.display = 'none';
+          btnText.textContent = 'Submit';
+          form.querySelector('.submit-btn').disabled = false;
+          alert('✅ Registration submitted! Check your email for confirmation.');
+          form.reset();
+        })
+        .catch(err => {
+          spinner.style.display = 'none';
+          btnText.textContent = 'Submit';
+          form.querySelector('.submit-btn').disabled = false;
+          console.error(err);
+          alert('❌ Something went wrong. Please try again.');
+        });
+    });
+  </script>
+</body>
+</html>
